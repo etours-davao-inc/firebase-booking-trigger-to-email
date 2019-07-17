@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const nunjucks = require('nunjucks');
 
 exports.sendEmailToStaff = functions.firestore
-  .document('Reservations/{reservationID}')
+  .document(functions.config().db.collection)
   .onCreate((snap, context) => {
     const newValue = snap.data()
     console.log(newValue)
