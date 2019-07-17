@@ -9,6 +9,16 @@ exports.emailBookingRequestToStaff = functions.firestore
 
     console.log(newBookingRequest)
 
+    const type = newBookingRequest.package.type
+    console.log(`Booking request is for ${type}.`)
+    if (type === "multiday") {
+      const template = "multiday.html"
+      
+    } else {
+      const template = "daytour.html"
+    }
+    console.log(`Template to use is ${template}...`)
+
     const mailTransport = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -22,7 +32,6 @@ exports.emailBookingRequestToStaff = functions.firestore
       to: functions.config().staff.email,
       subject: `Booking request for ${newBookingRequest.package.code}`,
       text: `Booking request for ${newBookingRequest.package.code}`,
-      html: payload
     }
     
     console.log('Service emailBookingRequestToStaff starting...');
@@ -30,17 +39,10 @@ exports.emailBookingRequestToStaff = functions.firestore
     nunjucks.configure({ autoescape: true });
 
     console.log("Rendering booking information payload to template...")
+    
+    const payload = nunjucks.render(`./templates/${template}`, newBookingRequest);
 
-    nunjucks.render('./templates/booking.html', newBookingRequest)
-      .then((payload) => {
-        console.log("Render Successful...")
-        mailSettings.html = payload
-        return true;
-      })
-      .catch(error => {
-        console.log("Error rendering payload")
-        return null;
-      })
+    mailSettings.html = payload;
 
     console.log(`Sending booking request to ${functions.config().staff.email}...`)
 
