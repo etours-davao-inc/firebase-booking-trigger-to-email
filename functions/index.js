@@ -6,7 +6,7 @@ exports.emailBookingRequestToStaff = functions.firestore
   .document(functions.config().db.collection)
   .onCreate((snapshot, context) => {
     const newBookingRequest = snapshot.data()
-
+    newBookingRequest.input.inquiryDate = newBookingRequest.input.inquiryDate.toDate();
     console.log(newBookingRequest)
 
     const type = newBookingRequest.package.type
@@ -14,9 +14,12 @@ exports.emailBookingRequestToStaff = functions.firestore
     let template;
     if (type === "multiday") {
       template = "multiday.html"
+      newBookingRequest.input.tourDates.from = newBookingRequest.input.tourDates.from.toDate()
+      newBookingRequest.input.tourDates.to = newBookingRequest.input.tourDates.to.toDate()
       
     } else {
       template = "daytour.html"
+      newBookingRequest.input.tourDate = newBookingRequest.input.tourDate.toDate();
     }
     console.log(`Template to use is ${template}...`)
 
