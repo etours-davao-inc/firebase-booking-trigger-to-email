@@ -5,8 +5,8 @@ const nunjucks = require('nunjucks');
 exports.sendEmailToStaff = functions.firestore
   .document(functions.config().db.collection)
   .onCreate((snapshot, context) => {
-    const newRecord = snapshot.data()
-    console.log(newRecord)
+    const newBookingRequest = snapshot.data()
+    console.log(newBookingRequest)
     console.log(context)
 
     const mailTransport = nodemailer.createTransport({
@@ -19,16 +19,13 @@ exports.sendEmailToStaff = functions.firestore
     
     console.log('Function sendEmailToStaff starting...');
     nunjucks.configure({ autoescape: true });
-    const payload = nunjucks.render('./templates/booking.html', newValue)
-    console.log(payload)
-
-    let subject = `Booking request for ${newRecord.info.code}`
+    const payload = nunjucks.render('./templates/booking.html', newV)
     
     const mailOptions = {
-      from: "Tom Claudio <dev.tomclaudio@gmail.com>",
-      to: 'tom@etours.ph',
-      subject: 'New Reservation from www.etours.ph',
-      text: "This is a test email",
+      from: `Tom Claudio <${functions.config().gmail.email}>`,
+      to: functions.config().staff.email,
+      subject: `Booking request for ${newBookingRequest.info.code}`,
+      text: `Booking request for ${newBookingRequest.info.code}`,
       html: payload
     }
 
