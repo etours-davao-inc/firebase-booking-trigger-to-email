@@ -11,11 +11,12 @@ exports.emailBookingRequestToStaff = functions.firestore
 
     const type = newBookingRequest.package.type
     console.log(`Booking request is for ${type}.`)
+    let template;
     if (type === "multiday") {
-      const template = "multiday.html"
+      template = "multiday.html"
       
     } else {
-      const template = "daytour.html"
+      template = "daytour.html"
     }
     console.log(`Template to use is ${template}...`)
 
