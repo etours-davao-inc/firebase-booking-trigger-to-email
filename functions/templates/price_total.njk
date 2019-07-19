@@ -1,0 +1,104 @@
+
+<tr>
+  <td style="padding-top:20px;">
+    <h2>Price Computation</h2>
+  </td>
+</tr>
+<tr>
+  <td>
+    <table class="invoice-table" width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <th></th>
+        <th>
+          <p class="align-right">Qty</p>
+        </th>
+        <th>
+          <p class="align-right">Price</p>
+        </th>
+        <th>
+          <p class="align-right">Total</p>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <p>Adults</p>
+        </th>
+        <th>
+          <p class="align-right">{{input.adults[0]}}</p>
+        </th>
+        <th>
+          <p class="align-right">{{calculations.item.adults}}</p>
+        </th>
+        <th>
+          <p class="align-right">{{calculations.total.adults}}</p>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <p>Child(0-2 yrs)</p>
+        </th>
+        <th>
+          <p class="align-right">{{input.kid02[0]}}</p>
+        </th>
+        <th>
+          <p class="align-right">{{calculations.item.kid02}}</p>
+        </th>
+        <th>
+          <p class="align-right">{{calculations.total.kid02}}</p>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <p>Child(3-5 yrs)</p>
+        </th>
+        <th>
+          <p class="align-right">{{input.kid35[0]}}</p>
+        </th>
+        <th>
+          <p class="align-right">{{calculations.item.kid35}}</p>
+        </th>
+        <th>
+          <p class="align-right">{{calculations.total.kid35}}</p>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <p>Child(6-11 yrs)</p>
+        </th>
+        <th>
+          <p class="align-right">{{input.kid611[0]}}</p>
+        </th>
+        <th>
+          <p class="align-right">{{calculations.item.kid611}}</p>
+        </th>
+        <th>
+          <p class="align-right">{{calculations.total.kid611}}</p>
+        </th>
+      </tr>
+      <tr class="payment-total-down-balance">
+        <td colspan="3" valign="middle">
+          <p class="total-cell_label">Total</p>
+        </td>
+        <td valign="middle">
+          <p class="align-right">{{calculations.total.total}}</p>
+        </td>
+      </tr>
+      <tr class="payment-total-down-balance">
+        <td colspan="3" valign="middle">
+          <p class="total-cell_label">Required Downpayment</p>
+        </td>
+        <td valign="middle">
+          <p class="align-right">{{calculations.total.downpayment}}</p>
+        </td>
+      </tr>
+      <tr class="payment-total-down-balance">
+        <td colspan="3" valign="middle">
+          <p class="total-cell_label">Balance</p>
+        </td>
+        <td valign="middle">
+          <p class="align-right">{{calculations.total.balance}}</p>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
