@@ -24,9 +24,11 @@ const convertTimeStampToJSDate = function (bookingData) {
   if (bookingData.package.type === "multiday") {
     bookingData.input.tourDates.from = bookingData.input.tourDates.from.toDate()
     bookingData.input.tourDates.to = bookingData.input.tourDates.to.toDate()
+    bookingData.input.tourDates.optionDate = bookingData.input.tourDates.optionDate.toDate()
 
   } else {
     bookingData.input.tourDate = bookingData.input.tourDate.toDate();
+    bookingData.input.optionDate = bookingData.input.optionDate.toDate();
   }
   return bookingData;
 }
