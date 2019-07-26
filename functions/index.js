@@ -13,7 +13,6 @@ exports.emailBookingRequestToStaff = functions.firestore
     let payload = renderEmailPayload(bookingData, emailTemplate);
     const mailTransport = prepareMailTransport();
     const mailSettings = prepareMailSettings(bookingData, payload);
-
     sendEmail(mailTransport, mailSettings);
   })
 
