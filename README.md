@@ -11,3 +11,8 @@ firebase deploy --only functions
 ```
 firebase functions:config:set someservice.key="THE API KEY" someservice.id="THE CLIENT ID"
 ```
+
+## To Env config
+```
+firebase functions:config:get
+```
