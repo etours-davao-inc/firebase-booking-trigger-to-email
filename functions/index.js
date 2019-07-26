@@ -64,7 +64,7 @@ const prepareMailTransport = function () {
 const prepareMailSettings = function (bookingData, payload) {
   console.log("Preparing mail settings...")
   return {
-    from: `Tom Claudio <${functions.config().gmail.email}>`,
+    from: `Etours Ph <${functions.config().gmail.email}>`,
     to: functions.config().staff.email,
     subject: `Booking request for ${bookingData.package.code}`,
     text: `Booking request for ${bookingData.package.code}`,
