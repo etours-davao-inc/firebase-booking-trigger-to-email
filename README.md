@@ -6,3 +6,8 @@ Firebase microservice for forwarding booking to reservation staff
 ```
 firebase deploy --only functions
 ```
+
+## Setting Env Variables
+```
+firebase functions:config:set someservice.key="THE API KEY" someservice.id="THE CLIENT ID"
+```
